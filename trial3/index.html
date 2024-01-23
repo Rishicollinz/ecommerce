@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="template.css">
+    <title>Trial</title>
+</head>
+<body>
+    <form class="row g-3 needs-validation"  novalidate>
+        <!-- <div class="col-md-4 position-relative">
+          <label for="validationTooltip01" class="form-label">First name</label>
+          <input type="text" class="form-control" id="name" oninput="validate()" required>
+          <span class="invalid-feedback" id="errName"></span> -->
+
+          <div class="form-outline">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" class="form-control" id="name"  name="name" oninput="validate()" required>
+            <span  class="invalid-feedback" id="errName"></span>
+        </div>
+          <!-- <div class="valid-tooltip">
+            Looks good!
+          </div>
+          <div class="invalid-tooltip">
+            Looks no good!
+          </div> -->
+        </div>
+        
+        <div class="col-12">
+          <button class="btn btn-primary" type="submit">Submit form</button>
+        </div>
+      </form>
+</body>
+<script>
+    function validate(){
+        let name=document.getElementById('name');
+        let nameChk=false;
+        let nameRegExp=/^[a-zA-Z\s]+$/;
+        
+        if(nameRegExp.test(name.value)){
+            nameChk=true;
+            name.classList.remove("is-invalid");
+            name.classList.add("is-valid");
+            document.getElementById("errName").innerHTML ="";
+        }else{
+            name.classList.remove("is-valid");
+            name.classList.add("is-invalid");
+            document.getElementById("errName").innerHTML ="Enter a valid name without special characters";
+        }
+        return nameChk;
+    }
+</script>
+</html>

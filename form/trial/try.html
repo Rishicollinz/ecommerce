@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="template.css">
+    <title>Trial</title>
+</head>
+<body id="bgc">
+    <section class="vh-100 gradient-custom">
+        <div class="container py-5 h-100">
+          <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-9 col-xl-7">
+              <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                <div class="card-body p-4 p-md-5">
+                  <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
+                  <form name="register" action="#" onsubmit="return validateForm()"  novalidate>
+    
+    
+                        <!-- Name -->
+                        <div class="form-outline">
+                            <label for="name" class="form-label">Name:</label>
+                            <input type="text" class="form-control" id="name" placeholder="John" name="name">
+                            <span id="errName" class="error"></span>
+                        </div>
+                        <br>
+      
+                        <!-- email  -->
+                        <div class="form-outline">
+                            <label for="email" class="form-label">Email:</label>
+                            <input type="email" class="form-control" id="email" placeholder="John@abc.com" name="email">
+                            <span id="errEmail" class="error"></span>
+                        </div>
+                        <br>
+      
+
+      
+                          <!-- phone -->
+                          <div class="form-outline">
+                            <label for="phone" class="form-label">Phone:</label>
+                            <input type="number" class="form-control" id="phone" placeholder="9876543210" autocomplete="tel" name="phone">
+                            <span id="errPhone" class="error"></span>
+                          </div>
+                          <br>
+        
+      
+                          <!-- dob  -->
+                          <div class="form-outline">
+                            <label for="birthdate">Birthdate:</label>
+                            <input type="date" class="form-control" id="birthdate" name="birthdate" min="1950-01-01" max="2010-12-31" >
+                            <span id="errDob" class="error"></span>
+                          </div>
+                          <br>
+        
+
+      
+                          <!-- gender -->
+                            <div class="form-outline">
+                                <label for="gender">Gender:</label>
+                                <select name="gender" id="gender" >
+                                    <option value="" selected>Not Selected</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="others">Others</option>
+                                </select>
+                                <span id="errGender" class="error"></span>
+                            </div>
+                            <br>
+        
+      
+                          <!-- education -->
+                          <div class="form-outline">
+                            <label for="edu">Education:</label>
+                            <i style="color:red" class="fa fa-star" aria-hidden="true"></i>
+                                <select name="edu" id="edu" >
+                                    <option value="" selected>Not Selected</option>
+                                    <option value="B.E">B.E</option>
+                                    <option value="M.E">M.E</option>
+                                    <option value="Ph.d">Ph.d</option>
+                                </select>
+                            <span id="errEdu" class="error"></span>
+                          </div>
+                          <br>
+        
+                          
+                          <!-- occupation  -->
+                            <div class="form-outline">
+                                <label for="occ" class="form-label">Occupation:</label>
+                                <input type="text" class="form-control" id="occ" placeholder="Farmer" name="occ">
+                                <span id="errOcc" class="error"></span>
+                            </div>
+                            <br>
+      
+                          <!-- username  -->
+                          <div class="form-outline">
+                            <label for="username" class="form-label">Username:</label>
+                            <input type="text" class="form-control" id="username" placeholder="John23" name="username">
+                            <span id="errUsername" class="error"></span>
+                          </div>
+                          <br>
+                          
+                          <!-- pan  -->
+                            <div class="form-outline">
+                                <label for="pan" class="form-label">PAN Number:</label>
+                                <input type="text" class="form-control" id="pan" placeholder="Enter PAN number" name="pan">
+                                <span id="errPan" class="error"></span>
+                            </div>
+                            <br>
+      
+                          <!-- password  -->
+                          <div class="form-outline">
+                            <label for="pwd" class="form-label">Password:</label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="pwd" placeholder="Enter your password" name="pwd">
+                                <div class="input-group-append">
+                                    <span class="input-group-text" id="togglePassword">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <span id="errPwd" class="error"></span>
+                          </div>
+                          <br>
+      
+                          
+                          <!-- profile  -->
+                            <div class="form-outline">
+                                <div class="form-group">
+                                    <label for="image">Profile Image:</label>
+                                    <i style="color:red" class="fa fa-star" aria-hidden="true"></i>
+                                    <input type="file" class="form-control-file" id="image" name="image" accept="image/*" onchange="previewImage()">
+                                </div>
+                              
+                                  <div class="preview-container">
+                                    <img id="imagePreview" class="img-fluid" alt="Image Preview" name="imagePreview">
+                                  </div>
+                                <span id="errImg" class="error"></span>
+                            </div>
+        
+                    
+      
+                    <div class="mt-4 pt-2">
+                      <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+</body>
+</html>

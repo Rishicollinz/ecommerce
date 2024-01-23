@@ -1,0 +1,372 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Trial</title>
+	<style>
+
+        span{
+			color:red;
+		}
+        .preview-container {
+        width: 100px;
+        height: 100px;
+        display: none;
+        overflow: hidden;
+        }
+
+        #imagePreview {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        }
+        #togglePassword {
+            cursor: pointer;
+        }
+	</style>
+</head>
+<body>
+	<div class="container-fluid p-5 bg-primary text-white">
+        <h1 id="regTitle">Registration Form</h1>
+        <form name="register" action="#" onsubmit="return validateForm()"  novalidate>
+            <!-- name -->
+			<div class="mb-3 mt-3">
+                <label for="name" class="form-label">Name:</label>
+                <i style="color:red" class="fa fa-star" aria-hidden="true"></i>
+                <input type="text" class="form-control" id="name" placeholder="John" name="name">
+                <span id="errName" class="error"></span>
+            </div>
+			<!-- email -->
+			<div class="mb-3 mt-3">
+                <label for="email" class="form-label">Email:</label>
+                <i style="color:red" class="fa fa-star" aria-hidden="true"></i>
+                <input type="email" class="form-control" id="email" placeholder="John@abc.com" name="email">
+                <span id="errEmail" class="error"></span>
+            </div>
+			<!-- phone -->
+			<div class="mb-3 mt-3">
+                <label for="phone" class="form-label">Phone:</label>
+                <i style="color:red" class="fa fa-star" aria-hidden="true"></i>
+                <input type="number" class="form-control" id="phone" placeholder="9876543210" autocomplete="tel" name="phone">
+                <span id="errPhone" class="error"></span>
+            </div>
+			<!-- dob -->
+			<div class="form-group">
+				<label for="birthdate">Birthdate:</label>
+                <i style="color:red" class="fa fa-star" aria-hidden="true"></i>
+				<input type="date" class="form-control" id="birthdate" name="birthdate" min="1950-01-01" max="2010-12-31" >
+                <span id="errDob" class="error"></span>
+            </div>
+            <!-- gender -->
+            <div class="mb-3 mt-3">
+                <label for="gender">Gender:</label>
+                <i style="color:red" class="fa fa-star" aria-hidden="true"></i>
+                
+
+                    <select name="gender" id="gender" >
+                        <option value="" selected>Not Selected</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="others">Others</option>
+                    </select>
+                <span id="errGender" class="error"></span>
+            </div>
+
+            <!-- occupation -->
+            <div class="mb-3 mt-3">
+                <label for="occ" class="form-label">Occupation:</label>
+                <input type="text" class="form-control" id="occ" placeholder="Farmer" name="occ">
+                <span id="errOcc" class="error"></span>
+            </div>
+
+            <!-- education -->
+            <div class="mb-3 mt-3">
+                <label for="edu">Education:</label>
+                <i style="color:red" class="fa fa-star" aria-hidden="true"></i>
+                    <select name="edu" id="edu" >
+                        <option value="" selected>Not Selected</option>
+                        <option value="B.E">B.E</option>
+                        <option value="M.E">M.E</option>
+                        <option value="Ph.d">Ph.d</option>
+                    </select>
+                <span id="errEdu" class="error"></span>
+            </div>
+
+            <!-- username -->
+            <div class="mb-3 mt-3">
+                <label for="username" class="form-label">Username:</label>
+                <i style="color:red" class="fa fa-star" aria-hidden="true"></i>
+                <input type="text" class="form-control" id="username" placeholder="John23" name="username">
+                <span id="errUsername" class="error"></span>
+            </div>
+
+            <!-- pan -->
+            <div class="mb-3 mt-3">
+                <label for="pan" class="form-label">PAN Number:</label>
+                <i style="color:red" class="fa fa-star" aria-hidden="true"></i>
+                <input type="text" class="form-control" id="pan" placeholder="Enter PAN number" name="pan">
+                <span id="errPan" class="error"></span>
+            </div>
+
+            <!-- password -->
+            <div class="mb-3 mt-3">
+                <label for="pwd" class="form-label">Password:</label>
+                <i style="color:red" class="fa fa-star" aria-hidden="true"></i>
+                <div class="input-group">
+                    <input type="password" class="form-control" id="pwd" placeholder="Enter your password" name="pwd">
+                    <div class="input-group-append">
+                        <span class="input-group-text" id="togglePassword">
+                          <i class="fa fa-eye" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                </div>
+                <span id="errPwd" class="error"></span>
+            </div>
+
+			<!-- profile -->
+			<div>
+                <div class="form-group">
+                    <label for="image">Profile Image:</label>
+                    <i style="color:red" class="fa fa-star" aria-hidden="true"></i>
+                    <input type="file" class="form-control-file" id="image" name="image" accept="image/*" onchange="previewImage()">
+                  </div>
+              
+                  <div class="preview-container">
+                    <img id="imagePreview" class="img-fluid" alt="Image Preview" name="imagePreview">
+                  </div>
+                <span id="errImg" class="error"></span>
+
+            </div>
+
+			<br>
+			<button type="submit"  class="btn btn-light">Submit</button>
+            <br>
+            <br>
+            <p style="color:white"><i style="color:red" class="fa fa-star" aria-hidden="true"></i>-It is required</p>
+		</form>
+	</div>
+	<script>
+        //toggle password
+        document.getElementById('togglePassword').addEventListener('click', function() {
+        var passwordInput = document.getElementById('pwd');
+        var type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        });
+
+        
+        //image getting process
+        function previewImage() {
+            var imageInput = document.getElementById('image');
+            var previewContainer = document.querySelector('.preview-container');
+            var imagePreview = document.getElementById('imagePreview');
+
+            // Clear previous preview
+            previewContainer.style.display = 'none';
+            imagePreview.src = '';
+
+            if (imageInput.files && imageInput.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                imagePreview.src = e.target.result;
+                previewContainer.style.display = 'block';
+            };
+
+            reader.readAsDataURL(imageInput.files[0]);
+            }
+        }
+
+
+            function calculateAge() {
+                var birthdateInput = document.getElementById('birthdate');
+                var resultElement = document.getElementById('result');
+
+                var selectedDate = new Date(birthdateInput.value);
+                var currentDate = new Date();
+
+                var age = currentDate.getFullYear() - selectedDate.getFullYear();
+
+                // Adjust age based on the current month and day
+                if (currentDate.getMonth() < selectedDate.getMonth() || (currentDate.getMonth() === selectedDate.getMonth() && currentDate.getDate() < selectedDate.getDate())) {
+                    age--;
+                }
+                return age;
+            }
+
+        
+        //validation
+		function validateForm() {
+			let finalChk=false;
+
+			//name validation
+
+  			let name = document.forms["register"]["name"].value;
+			let nameChk=false;
+			let nameRegExp=/^[a-zA-Z\s]+$/;
+			
+			if(nameRegExp.test(name)){
+				nameChk=true;
+				document.getElementById("errName").innerHTML ="";
+			}else{
+				document.getElementById("errName").innerHTML ="Enter a valid name without special characters";
+			}
+
+			//email validation
+			let email = document.forms["register"]["email"].value;
+			let emailChk=false;
+			let emailRegExp=/^[\w.%+-]+@[\w.-]+\.[a-zA-Z]{2,}$/;
+
+			
+			if(emailRegExp.test(email)){
+				emailChk=true;
+				document.getElementById("errEmail").innerHTML ="";
+			}else{
+				document.getElementById("errEmail").innerHTML ="Enter a valid email";
+			}
+
+			//phone validation
+			let phone = document.forms["register"]["phone"].value;
+			let phoneChk=false;
+			let phoneRegExp=/^[6-9]\d{9}$/;
+			
+			if(phoneRegExp.test(phone)){
+				phoneChk=true;
+				document.getElementById("errPhone").innerHTML ="";
+			}else{
+				document.getElementById("errPhone").innerHTML ="Enter a valid Phone";
+			}
+
+			//dob validation
+			var birthdateInput = document.getElementById('birthdate');
+            let dobChk=false;
+            var birthdateValue = birthdateInput.value;
+            if(birthdateValue===""){
+                document.getElementById("errDob").innerHTML ="Choose your birthdate";
+            }else{
+                dobChk=true;
+                document.getElementById("errDob").innerHTML ="";
+            }
+
+            //gender validation
+            let gender=document.getElementById("gender").value;
+            let genderChk=false;
+
+            if(gender===""){
+                document.getElementById("errGender").innerHTML ="Choose your gender";
+            }else{ 
+                genderChk=true;
+                document.getElementById("errGender").innerHTML ="";
+            }
+
+            //education validation
+            let edu=document.getElementById("edu").value;
+            let eduChk=false;
+
+            if(edu===""){
+                document.getElementById("errEdu").innerHTML ="Choose your educational qualification";
+            }else{
+                eduChk=true;
+                document.getElementById("errEdu").innerHTML ="";
+            }
+
+            //username validation-unique condition
+            let username = document.getElementById("username").value;
+            let usernameChk = false;
+            if(username===""){
+                document.getElementById("errUsername").innerHTML="Provide a username";
+            }else{
+                if (!isUsernameUnique(username)) {
+                    document.getElementById("errUsername").innerHTML = "Username already exists. Please choose a different username.";
+                } else {
+                    usernameChk = true;
+                    document.getElementById("errUsername").innerHTML = "";
+                }
+            }
+
+            
+            
+
+
+            //pan validation
+            let pan = document.forms["register"]["pan"].value;
+			let panChk=false;
+			let panRegExp=/^[A-Z]{5}\d{4}[A-Z]$/;
+			
+			if(panRegExp.test(pan)){
+				panChk=true;
+				document.getElementById("errPan").innerHTML ="";
+			}else{
+				document.getElementById("errPan").innerHTML ="Enter a valid PAN Number";
+			}
+
+            //password validation
+            let pwd = document.forms["register"]["pwd"].value;
+			let pwdChk=false;
+            let pwdRegExp=/^(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*()_+{}|;:'",.<>?/~`-])(?=.*\d).{8,15}$/;
+			//let pwdRegExp=/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+{}|;:'",.<>?/~`-]).{8,15}$/;
+
+			
+			if(pwdRegExp.test(pwd)){
+				pwdChk=true;
+				document.getElementById("errPwd").innerHTML ="";
+			}else{
+				document.getElementById("errPwd").innerHTML ="Password should contain 8-15 chars,one uppercase, one lowercase,one numeric char and one special char ";
+			}
+
+            //image validation
+            let imageInput=document.getElementById('image');
+            let image=document.getElementById('image').files;
+            let imageChk=false;
+
+            
+        
+            if(image.length===0){
+                document.getElementById("errImg").innerHTML ="Choose your profile picture";
+            }else if (imageInput.files[0].size > 2 * 1024 * 1024) {
+                    document.getElementById("errImg").innerHTML ="Image size must be less than 2MB.";
+            }else{
+                imageChk=true;
+                document.getElementById("errImg").innerHTML ="";
+            }
+
+			if(nameChk && phoneChk && emailChk && dobChk && imageChk && panChk && pwdChk && genderChk && eduChk && usernameChk ){
+				finalChk=true;
+                submitForm();
+			}
+            
+			return finalChk;
+		}
+        function submitForm() {
+            var formData = {
+                name: document.getElementById('name').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value,
+                birthdate: document.getElementById('birthdate').value,
+                age:calculateAge(),
+                gender:document.getElementById('gender').value,
+                occupation:document.getElementById('occ').value,
+                education:document.getElementById('edu').value,
+                username:document.getElementById('username').value,
+                password:document.getElementById('pwd').value,
+                pan:document.getElementById('pan').value,
+                image: document.getElementById('image').files[0] ? document.getElementById('image').files[0].name : '',
+            };
+
+            // Store the form data in local storage
+            var submissions = JSON.parse(localStorage.getItem('formSubmissions')) || [];
+            submissions.push(formData);
+            localStorage.setItem('formSubmissions', JSON.stringify(submissions));
+
+            // Display the submitted data
+            alert("Data submitted!");
+        }
+        function isUsernameUnique(username) {
+            var submissions = JSON.parse(localStorage.getItem('formSubmissions')) || [];
+            return !submissions.some(submission => submission.username === username);
+        }
+	</script>
+</body>
+</html>
